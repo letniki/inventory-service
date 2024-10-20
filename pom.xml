@@ -37,9 +37,8 @@
         <openapi-generator.version>7.2.0</openapi-generator.version>
 
         <product-service-openapi-spec.path>
-<!--                        http://localhost:8082/v3/api-docs-->
+<!--                        http://localhost:8080/v3/api-docs-->
             C:\Users\User\IdeaProjects\march-2024-java-spring\src\main\resources\spec\product-service.openapi.yaml
-<!--            ${project.basedir}/src/main/resources/spec/car-service.openapi.yaml-->
         </product-service-openapi-spec.path>
         <product-api-package>org.example.inventoryservice.productapi.client</product-api-package>
     </properties>

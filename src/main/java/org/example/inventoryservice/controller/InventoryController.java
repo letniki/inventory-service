@@ -4,7 +4,6 @@ import lombok.RequiredArgsConstructor;
 import org.example.inventoryservice.dto.InventoryDto;
 import org.example.inventoryservice.service.InventoryService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

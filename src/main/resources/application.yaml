@@ -10,11 +10,11 @@ spring:
       resourceserver:
         jwt:
           issuer-uri: https://dev-3ye8hk3rxi1gafds.us.auth0.com/
-  logging:
-    level:
-      sun:
-        rmi:
-          transport:
-            tcp: OFF
-  server:
-    port: 8082
+logging:
+  level:
+    sun:
+      rmi:
+        transport:
+          tcp: OFF
+server:
+  port: 8081

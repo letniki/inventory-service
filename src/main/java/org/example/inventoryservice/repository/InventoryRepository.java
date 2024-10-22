@@ -11,6 +11,8 @@ import java.util.Optional;
 @Repository
 public interface InventoryRepository extends MongoRepository<Inventory, ObjectId> {
 
-    Optional<Inventory> findByStoreId(Long storeId);
+    Optional<Inventory> findByStoreIdAndProductId(Long storeId, Long productId);
     List<Inventory> findAllByProductId(Long productId);
+
+    void deleteInventoryByProductId(Long productId);
 }

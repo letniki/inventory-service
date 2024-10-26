@@ -9,20 +9,17 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpHeaders;
 import org.springframework.web.client.RestTemplate;
 
-import java.io.IOException;
-import java.util.function.Supplier;
-
 @Configuration
 @RequiredArgsConstructor
 public class ProductApiConfig {
 
-    private final Supplier<String> tokenProvider;
+    private final TokenProvider tokenProvider;
 
     @Bean
     public RestTemplate restTemplate() {
         return new RestTemplateBuilder()
                 .interceptors((request, body, execution) -> {
-                    request.getHeaders().set(HttpHeaders.AUTHORIZATION, "Bearer " + tokenProvider.get());
+                    request.getHeaders().set(HttpHeaders.AUTHORIZATION, "Bearer " + tokenProvider.getToken());
                     return execution.execute(request, body);
                 })
                 .build();
@@ -30,7 +27,7 @@ public class ProductApiConfig {
     @Bean
     public ApiClient productApiClient(){
         ApiClient apiClient = new ApiClient(restTemplate());
-        apiClient.setBearerToken(tokenProvider);
+        apiClient.setBearerToken(tokenProvider::getToken);
         return apiClient;
     }
     @Bean

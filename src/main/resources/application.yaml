@@ -10,14 +10,18 @@ spring:
       resourceserver:
         jwt:
           issuer-uri: https://dev-3ye8hk3rxi1gafds.us.auth0.com/
-  kafka:
-    consumer:
-      topic: product-deleted-events
-      bootstrap-servers: localhost:9092
-      key-deserializer: org.apache.kafka.common.serialization.IntegerDeserializer
-      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
-      properties:
-        spring.json.trusted.packages: "*"
+  cloud:
+    function:
+      definition: product-deleted
+    stream:
+      bindings:
+        product-deleted-in-0:
+          destination: product-deleted-events
+          group: inventory-service
+          content-type: application/json
+      kafka:
+        binder:
+          brokers: localhost:9092
 logging:
   level:
     sun:
